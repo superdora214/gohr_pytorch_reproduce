@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 训练产物（权重/checkpoint 太大不上传）
+checkpoints/
+*.pt
+*.h5
+
+# 第三方参考代码（deep_speck 是原作者仓库，不入库）
+deep_speck/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 数据
+*.npy
