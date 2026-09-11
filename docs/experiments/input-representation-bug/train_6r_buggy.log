@@ -1,0 +1,59 @@
+[配置] 轮数=6 | 训练样本=10000000 | 验证=1000000 | depth=10 | epoch=200 | 设备=cuda
+Testvector verified. SPECK32/64 实现正确!
+
+生成训练/验证数据...
+数据生成耗时: 0.7s | 训练集 torch.Size([10000000, 64])
+网络参数量: 0.10M
+CSV 日志: ./checkpoints\history_6r.csv
+TensorBoard 日志: ./checkpoints\tb_6r
+epoch 1/200 | loss 0.2375 | val_acc 0.6034 | lr 0.00179
+epoch 2/200 | loss 0.2354 | val_acc 0.6030 | lr 0.00158
+epoch 3/200 | loss 0.2353 | val_acc 0.6029 | lr 0.00137
+epoch 4/200 | loss 0.2352 | val_acc 0.6031 | lr 0.00116
+epoch 5/200 | loss 0.2351 | val_acc 0.6030 | lr 0.00094
+epoch 6/200 | loss 0.2351 | val_acc 0.6034 | lr 0.00073
+epoch 7/200 | loss 0.2350 | val_acc 0.6035 | lr 0.00052
+epoch 8/200 | loss 0.2349 | val_acc 0.6035 | lr 0.00031
+epoch 9/200 | loss 0.2347 | val_acc 0.6036 | lr 0.00010
+epoch 10/200 | loss 0.2347 | val_acc 0.6040 | lr 0.00200
+epoch 11/200 | loss 0.2338 | val_acc 0.6054 | lr 0.00179
+epoch 12/200 | loss 0.2335 | val_acc 0.6063 | lr 0.00158
+epoch 13/200 | loss 0.2334 | val_acc 0.6062 | lr 0.00137
+epoch 14/200 | loss 0.2333 | val_acc 0.6063 | lr 0.00116
+epoch 15/200 | loss 0.2332 | val_acc 0.6066 | lr 0.00094
+epoch 16/200 | loss 0.2331 | val_acc 0.6065 | lr 0.00073
+epoch 17/200 | loss 0.2330 | val_acc 0.6066 | lr 0.00052
+epoch 18/200 | loss 0.2329 | val_acc 0.6066 | lr 0.00031
+epoch 19/200 | loss 0.2328 | val_acc 0.6069 | lr 0.00010
+epoch 20/200 | loss 0.2332 | val_acc 0.6068 | lr 0.00200
+epoch 21/200 | loss 0.2332 | val_acc 0.6067 | lr 0.00179
+epoch 22/200 | loss 0.2331 | val_acc 0.6064 | lr 0.00158
+epoch 23/200 | loss 0.2330 | val_acc 0.6058 | lr 0.00137
+epoch 24/200 | loss 0.2329 | val_acc 0.6062 | lr 0.00116
+epoch 25/200 | loss 0.2328 | val_acc 0.6065 | lr 0.00094
+epoch 26/200 | loss 0.2327 | val_acc 0.6064 | lr 0.00073
+epoch 27/200 | loss 0.2326 | val_acc 0.6063 | lr 0.00052
+epoch 28/200 | loss 0.2324 | val_acc 0.6061 | lr 0.00031
+epoch 29/200 | loss 0.2323 | val_acc 0.6062 | lr 0.00010
+epoch 30/200 | loss 0.2329 | val_acc 0.6063 | lr 0.00200
+epoch 31/200 | loss 0.2328 | val_acc 0.6053 | lr 0.00179
+epoch 32/200 | loss 0.2327 | val_acc 0.6060 | lr 0.00158
+epoch 33/200 | loss 0.2326 | val_acc 0.6056 | lr 0.00137
+epoch 34/200 | loss 0.2324 | val_acc 0.6054 | lr 0.00116
+epoch 35/200 | loss 0.2323 | val_acc 0.6053 | lr 0.00094
+epoch 36/200 | loss 0.2321 | val_acc 0.6055 | lr 0.00073
+epoch 37/200 | loss 0.2319 | val_acc 0.6049 | lr 0.00052
+epoch 38/200 | loss 0.2318 | val_acc 0.6048 | lr 0.00031
+epoch 39/200 | loss 0.2316 | val_acc 0.6046 | lr 0.00010
+epoch 40/200 | loss 0.2324 | val_acc 0.6051 | lr 0.00200
+epoch 41/200 | loss 0.2324 | val_acc 0.6050 | lr 0.00179
+epoch 42/200 | loss 0.2322 | val_acc 0.6045 | lr 0.00158
+epoch 43/200 | loss 0.2321 | val_acc 0.6043 | lr 0.00137
+epoch 44/200 | loss 0.2319 | val_acc 0.6044 | lr 0.00116
+epoch 45/200 | loss 0.2317 | val_acc 0.6040 | lr 0.00094
+epoch 46/200 | loss 0.2314 | val_acc 0.6034 | lr 0.00073
+epoch 47/200 | loss 0.2312 | val_acc 0.6032 | lr 0.00052
+epoch 48/200 | loss 0.2310 | val_acc 0.6028 | lr 0.00031
+epoch 49/200 | loss 0.2308 | val_acc 0.6026 | lr 0.00010
+epoch 50/200 | loss 0.2319 | val_acc 0.6039 | lr 0.00200
+epoch 51/200 | loss 0.2318 | val_acc 0.6036 | lr 0.00179

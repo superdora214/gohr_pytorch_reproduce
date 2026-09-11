@@ -10,6 +10,11 @@ checkpoints/
 *.pt
 *.h5
 
+# 根目录的训练日志与曲线图（产物，不是代码）
+# 注意：docs/experiments/ 里归档的调试日志要保留，所以只忽略根目录的
+/train_*.log
+/training_curves*.png
+
 # 第三方参考代码（deep_speck 是原作者仓库，不入库）
 deep_speck/
 

@@ -1,2 +1,13 @@
+# 依赖清单（pip 方式，跨平台）
+# 安装：pip install -r requirements.txt
+#
+# 注意：torch 建议按 CUDA 版本单独装，例如
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+
 torch>=2.0
 numpy>=1.21
+
+# 训练监控与可视化
+tensorboard>=2.14
+matplotlib>=3.7
+pillow>=10.0
