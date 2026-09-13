@@ -44,7 +44,20 @@ def train(args):
     print("生成训练/验证数据...")
     t0 = time.time()
     X_tr, Y_tr = make_train_data(args.train_size, args.rounds, device=device)
-    X_va, Y_va = make_train_data(args.eval_size, args.rounds, device=device)
+
+    # 验证集固定：缓存到磁盘，保证不同运行（尤其是断点续训前后）的 val_acc 可比。
+    # 不固定的话，每次启动都会换一套新的验证样本，val_acc 会因此跳变——
+    # 那种跳变是"换了考卷"，不是模型进步。论文的做法就是全程用同一套 10^6 验证样本。
+    fixed_val = not args.no_fixed_val
+    val_cache = os.path.join(args.outdir, f"valset_{args.rounds}r_{args.eval_size}.pt")
+    if fixed_val and os.path.exists(val_cache):
+        X_va, Y_va = torch.load(val_cache, map_location=device)
+        print(f"验证集从磁盘加载（固定）: {val_cache}")
+    else:
+        X_va, Y_va = make_train_data(args.eval_size, args.rounds, device=device)
+        if fixed_val:
+            torch.save((X_va, Y_va), val_cache)
+            print(f"验证集已生成并缓存: {val_cache}")
     print(f"数据生成耗时: {time.time()-t0:.1f}s | 训练集 {X_tr.shape}")
 
     X_tr = X_tr.float()
@@ -175,6 +188,8 @@ def main():
                         help="关闭 TensorBoard 记录（默认开启，日志写到 outdir/tb_Nr）")
     parser.add_argument("--resume", action="store_true",
                         help="从 outdir/net{N}r.pt 断点续训（恢复权重、优化器状态和 epoch）")
+    parser.add_argument("--no-fixed-val", action="store_true",
+                        help="不固定验证集（默认固定：缓存到 outdir/valset_*.pt，保证续训前后 val_acc 可比）")
     args = parser.parse_args()
 
     os.makedirs(args.outdir, exist_ok=True)
