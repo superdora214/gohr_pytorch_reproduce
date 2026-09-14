@@ -75,11 +75,46 @@ def batch_expand_key(k, rounds):
     return ks_list
 
 
+def dec_one_round(c0, c1, k):
+    """
+    SPECK32 一轮解密（enc_one_round 的逆运算）。
+    逆序撤销加密的 5 步：异或自逆、加法用减法、ror/rol 互换。
+    """
+    c1 = c1 ^ c0
+    c1 = ror(c1, BETA)
+    c0 = c0 ^ k
+    c0 = (c0 - c1) & MASK
+    c0 = rol(c0, ALPHA)
+    return c0, c1
+
+
+def batch_dec_one_round(c0, c1, k):
+    """
+    向量化的一轮解密。
+    c0/c1: shape [N]；k 可以是标量（所有样本用同一候选密钥）或 shape [N]（每个样本不同）。
+    用于密钥恢复攻击中"用候选密钥部分解密最后一轮"。
+    """
+    c1 = c1 ^ c0
+    c1 = ror(c1, BETA)
+    c0 = c0 ^ k
+    c0 = (c0 - c1) & MASK
+    c0 = rol(c0, ALPHA)
+    return c0, c1
+
+
 def encrypt(pt_l, pt_r, subkeys):
     """完整加密（标量版）。pt_l/r: 明文左右块"""
     x, y = pt_l, pt_r
     for k in subkeys:
         x, y = enc_one_round(x, y, k)
+    return x, y
+
+
+def decrypt(ct_l, ct_r, subkeys):
+    """完整解密（标量版），按相反顺序应用子密钥"""
+    x, y = ct_l, ct_r
+    for k in reversed(subkeys):
+        x, y = dec_one_round(x, y, k)
     return x, y
 
 
